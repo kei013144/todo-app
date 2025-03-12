@@ -1,32 +1,51 @@
 import { useState } from "react"
-import ColorfulMessage from "./components/ColorfulMessage"
+import "./App.css"
 
 function App() {
-  const [num, setNum] = useState(-999);
+  const [todoText, setTodoText] = useState("");
+  const [incompleteTodos, setIncompleteTodos] = useState(["Todo1","Todo2"]);
+  const [completeTodos, setCompleteTodos] = useState(["完了したTodo1","完了したTodo1"]);
+
+  const onChangeText = (event) => setTodoText(event.target.value);
+  const onClickAdd = () => {
+    const newTodos = [...incompleteTodos];
+    newTodos.push(todoText);
+    setIncompleteTodos(newTodos);
+  };
 
   return (
     <>
-      <div>
-        <input placeholder="TODOを入力"></input>
-        <button>追加</button>
+      <div className="input-area">
+        <input placeholder="TODOを入力" value={todoText} onChange={onChangeText}></input>
+        <button onClick={onClickAdd}>追加</button>
       </div>
-      <div>
-        <p>未完了のTODO</p>
+      <div className="incomplete-area">
+        <p className="title">未完了のTODO</p>
         <ul>
-          <li>
-            <p>TODO</p>
-            <button>完了</button>
-            <button>削除</button>
-          </li>
+          {incompleteTodos.map((todo) => {
+            return(
+            <li key = {todo}>
+            <div className="list-row">
+              <p>{todo}</p>
+              <button>完了</button>
+              <button>削除</button>
+            </div>
+            </li>);
+          })}
         </ul>
       </div>
-      <div>
-      <p>完了のTODO</p>
+      <div className="complete-area">
+      <p className="title">完了のTODO</p>
         <ul>
-          <li>
-            <p>TODO</p>
-            <button>戻す</button>
-          </li>
+        {completeTodos.map((todo) => {
+            return(
+            <li key = {todo}>
+            <div className="list-row">
+              <p>{todo}</p>
+              <button>戻す</button>
+            </div>
+            </li>);
+          })}
         </ul>
       </div>
     </>
