@@ -8,9 +8,13 @@ function App() {
 
   const onChangeText = (event) => setTodoText(event.target.value);
   const onClickAdd = () => {
+    if (todoText === "") return;
+
     const newTodos = [...incompleteTodos];
     newTodos.push(todoText);
     setIncompleteTodos(newTodos);
+
+    setTodoText("");
   };
 
   return (
