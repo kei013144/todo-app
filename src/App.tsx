@@ -16,9 +16,28 @@ function App() {
     setTodoText("");
   };
 
-  const onClickComplete = () => {
-    const newTodos = [...completeTodos];
-    setCompleteTodos(newTodos);
+  const onClickDelete = (index: number) => {
+    const newTodos = [...incompleteTodos];
+    newTodos.splice(index, 1);
+    setIncompleteTodos(newTodos);
+  };
+
+  const onClickComplete = (index: number) => {
+    const todo: string = incompleteTodos[index];
+    const newTodos = [...incompleteTodos];
+    const newCompleteTodos = [...completeTodos, todo];
+    newTodos.splice(index, 1);
+    setIncompleteTodos(newTodos);
+    setCompleteTodos(newCompleteTodos);
+  };
+
+  const onClickBack = (index: number) => {
+    const todo: string = completeTodos[index];
+    const newCompleteTodos = [...completeTodos];
+    const newInCompleteTodos = [...incompleteTodos, todo];
+    newCompleteTodos.splice(index, 1);
+    setIncompleteTodos(newInCompleteTodos);
+    setCompleteTodos(newCompleteTodos);
   };
 
   return (
@@ -30,13 +49,13 @@ function App() {
       <div className="incomplete-area">
         <p className="title">未完了のTODO</p>
         <ul>
-          {incompleteTodos.map((todo) => {
+          {incompleteTodos.map((todo, index) => {
             return(
             <li key = {todo}>
             <div className="list-row">
               <p>{todo}</p>
-              <button onClick={onClickComplete}>完了</button>
-              <button>削除</button>
+              <button onClick={() => onClickComplete(index)}>完了</button>
+              <button onClick={() => onClickDelete(index)}>削除</button>
             </div>
             </li>);
           })}
@@ -45,12 +64,12 @@ function App() {
       <div className="complete-area">
       <p className="title">完了のTODO</p>
         <ul>
-        {completeTodos.map((todo) => {
+        {completeTodos.map((todo, index) => {
             return(
             <li key = {todo}>
             <div className="list-row">
               <p>{todo}</p>
-              <button>戻す</button>
+              <button onClick={() => onClickBack(index)}>戻す</button>
             </div>
             </li>);
           })}
