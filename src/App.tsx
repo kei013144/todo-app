@@ -3,8 +3,8 @@ import "./App.css"
 
 function App() {
   const [todoText, setTodoText] = useState("");
-  const [incompleteTodos, setIncompleteTodos] = useState(["Todo1","Todo2"]);
-  const [completeTodos, setCompleteTodos] = useState(["完了したTodo1","完了したTodo1"]);
+  const [incompleteTodos, setIncompleteTodos] = useState<string[]>([]);
+  const [completeTodos, setCompleteTodos] = useState<string[]>([]);
 
   const onChangeText = (event: ChangeEvent<HTMLInputElement>) => setTodoText(event.target.value);
   const onClickAdd = () => {
