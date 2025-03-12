@@ -10,8 +10,7 @@ function App() {
   const onClickAdd = () => {
     if (todoText === "") return;
 
-    const newTodos = [...incompleteTodos];
-    newTodos.push(todoText);
+    const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
 
     setTodoText("");
