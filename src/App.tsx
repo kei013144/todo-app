@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState, ChangeEvent } from 'react';
 import "./App.css"
 
 function App() {
@@ -6,7 +6,7 @@ function App() {
   const [incompleteTodos, setIncompleteTodos] = useState(["Todo1","Todo2"]);
   const [completeTodos, setCompleteTodos] = useState(["完了したTodo1","完了したTodo1"]);
 
-  const onChangeText = (event) => setTodoText(event.target.value);
+  const onChangeText = (event: ChangeEvent<HTMLInputElement>) => setTodoText(event.target.value);
   const onClickAdd = () => {
     if (todoText === "") return;
 
@@ -15,6 +15,11 @@ function App() {
     setIncompleteTodos(newTodos);
 
     setTodoText("");
+  };
+
+  const onClickComplete = () => {
+    const newTodos = [...completeTodos];
+    setCompleteTodos(newTodos);
   };
 
   return (
@@ -31,7 +36,7 @@ function App() {
             <li key = {todo}>
             <div className="list-row">
               <p>{todo}</p>
-              <button>完了</button>
+              <button onClick={onClickComplete}>完了</button>
               <button>削除</button>
             </div>
             </li>);
