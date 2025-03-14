@@ -23,7 +23,7 @@ export default function App() {
   };
 
   const onClickComplete = (index: number) => {
-    const todo: string = incompleteTodos[index];
+    const todo = incompleteTodos[index];
     const newTodos = [...incompleteTodos];
     const newCompleteTodos = [...completeTodos, todo];
     newTodos.splice(index, 1);
@@ -32,7 +32,7 @@ export default function App() {
   };
 
   const onClickBack = (index: number) => {
-    const todo: string = completeTodos[index];
+    const todo = completeTodos[index];
     const newCompleteTodos = [...completeTodos];
     const newInCompleteTodos = [...incompleteTodos, todo];
     newCompleteTodos.splice(index, 1);
