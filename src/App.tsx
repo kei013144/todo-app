@@ -1,7 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import "./App.css"
 
-function App() {
+export default function App() {
   const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState<string[]>([]);
   const [completeTodos, setCompleteTodos] = useState<string[]>([]);
@@ -78,5 +78,3 @@ function App() {
     </>
   )
 }
-
-export default App
