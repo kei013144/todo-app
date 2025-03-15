@@ -1,19 +1,19 @@
-import { useState, ChangeEvent } from 'react';
+import { useState } from 'react';
 import "./App.css"
+import useTodoInput from './hooks/useTodoInput';
 
 export default function App() {
-  const [todoText, setTodoText] = useState("");
+  const { todoText, onChangeText, resetTodoText } = useTodoInput();
   const [incompleteTodos, setIncompleteTodos] = useState<string[]>([]);
   const [completeTodos, setCompleteTodos] = useState<string[]>([]);
 
-  const onChangeText = (event: ChangeEvent<HTMLInputElement>) => setTodoText(event.target.value);
   const onClickAdd = () => {
     if (todoText === "") return;
 
     const newTodos = [...incompleteTodos, todoText];
     setIncompleteTodos(newTodos);
 
-    setTodoText("");
+    resetTodoText();
   };
 
   const onClickDelete = (index: number) => {
