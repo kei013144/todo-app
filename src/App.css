@@ -1,22 +1,22 @@
-input{
+input {
   border-radius: 8px;
   border: none;
   padding: 6px 16px;
 }
 
-button{
+button {
   border-radius: 8px;
   border: none;
   padding: 6px 16px;
 }
 
-button:hover{
+button:hover {
   background-color: rgb(81, 9, 248);
   color: #fff;
   cursor: pointer;
 }
 
-.input-area{
+.input-area {
   background-color: rgb(19, 2, 145);
   width: 400px;
   height: 32px;
@@ -25,7 +25,7 @@ button:hover{
   border-radius: 8px;
 }
 
-.incomplete-area{
+.incomplete-area {
   border: 2px solid rgb(19, 2, 145);
   width: 400px;
   padding: 8px;
@@ -34,8 +34,8 @@ button:hover{
   min-height: 200px;
 }
 
-.complete-area{
-  border: 2px solid  rgb(19, 2, 145);
+.complete-area {
+  border: 2px solid rgb(19, 2, 145);
   width: 400px;
   padding: 8px;
   margin: 8px;
@@ -43,18 +43,18 @@ button:hover{
   min-height: 200px;
 }
 
-.title{
+.title {
   text-align: center;
   margin-top: 0;
   font-weight: bold;
 }
 
-.list-row{
+.list-row {
   display: flex;
   gap: 8px;
   align-items: center;
 }
 
-.list-title{
+.list-title {
   margin: 8px;
 }
