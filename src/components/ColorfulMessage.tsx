@@ -1,6 +1,6 @@
 interface Props {
-  message: string;
   color: string;
+  children?: React.ReactNode;
 }
 
 export default function ColorfulMessage(props: Props) {
@@ -9,5 +9,5 @@ export default function ColorfulMessage(props: Props) {
     fontSize: '18px',
   };
 
-  return <p style={messageStyle}>{props.message}</p>;
+  return <p style={messageStyle}>{props.children}</p>;
 }
